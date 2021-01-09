@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Franco Contacto</title>
+    <script src="https://use.fontawesome.com/73bb08277a.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/font-awesome.css">
+</head>
+<body>
+    <header id="header" id="contacto">    
+        <nav id="nav">
+            <div class="logo">
+                <img src="../assets/franco petshop logo.png" alt="">
+            </div>
+            <div class="navigation" id="navigation">
+                <a href="../index.html">Inicio</a>
+                <a href="./farmacia.html">Farmacia</a>
+                <a href="./juguetes.html">Juguetes</a>
+                <a class="active" href="#">Contacto</a>
+            </div>
+            <div id="hamburger">
+                <button id="boton">
+                    <span class="top" id="top"></span>
+                    <span class="middle" id="middle"></span>
+                    <span class="bottom" id="bottom"></span>
+                </button>
+            </div>
+            <div class="socialMedia">
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </div>            
+        </nav>
+    </header>
+    <nav id="responsive">
+        <a href="../index.html">Inicio</a>
+        <a href="./farmacia.html">Farmacia</a>
+        <a href="./juguetes.html">Juguetes</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <section class="contactoImg">        
+    </section>
+    <h2 class="contactoTitle">Habla con Nosotros</h2>
+    <div class="modal" id="modal">
+        <div class="modalHeader">
+            <div class="title" id="title">
+            </div>
+            <button class="close-button" id="close-button">&times;</button>
+        </div>
+        <div class="modalBody" id="modalBody"></div>
+    </div>
+    <section class="formContact">
+        <form action="">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name">
+            <label for="lastName">Apellido</label>
+            <input type="tex" name="lastName" id="lastName">
+            <label for="phone">Número de teléfono</label>
+            <input type="tel" name="phone" id="phone">
+            <label for="checkbox">Que tipo de mascotas tienes?</label>
+            <div class="checkbox">                
+                <label for="perro">Perro</label>
+                <input type="checkbox" name="perro" id="perro">
+                <label for="gato">Gato</label>
+                <input type="checkbox" name="gato" id="gato">
+            </div>
+            <label for="textarea">Deja tus comentarios</label>
+            <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+            <button type="button" id="send">Enviar</button>
+        </form>
+        <img src="../assets/new-dog-homepage-2-2.jpg" alt="">
+    </section>
+    <section class="location">
+        <h2>Donde Encontrarnos</h2>
+        <div class="locationItems">
+            <img src="../assets/dog-stand.png" alt="">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.687147907889!2d-58.43256788505209!3d-34.612071765446636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405%20CCB%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1608688610695!5m2!1ses-419!2sar"  frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <div class="datosContacto">
+            <div class="ubicacion">
+                <i class="fa fa-location-arrow"></i>
+                <p>Rio de Janeiro 300(Caballito), CABA, Argentina</p>
+            </div>            
+            <div class="mail">                
+                <i class="fa fa-envelope"></i>
+                <p>contacto@francopetshop.com</p>
+            </div>
+            <div class="phone">
+                <i class="fa fa-whatsapp"></i>
+                <p>+54925125323</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footerNav">
+            <a href="../index.html">Inicio</a>
+            <a href="./farmacia.html">Farmacia</a>
+            <a href="./juguetes.html">Juguetes</a>
+            <a href="#">Contacto</a>
+        </div>
+        <div class="footerSocialMedia">
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
+        <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Franco%20." class="float" target="_blank">
+            <i class="fa fa-whatsapp my-float"></i>
+            </a>
+    </footer>    
+    <script src="../script/script.js"></script>
+</body>
+</html>
