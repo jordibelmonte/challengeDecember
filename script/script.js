@@ -20,69 +20,66 @@ function programa(data){
             
         } 
     }
-    crearCard(datos)
-    agregarACarrito()
-
-
-    function crearCard(datos){
-            /* -------- RECORRO ARRAY DE OBJETOS --------*/
-            for(var i= 0 ; i<datos.length; i++){  
-                /* -------- CREO CARDS DE PRODUCTOS --------- */       
-                const card = document.createElement("div")
-                card.className = "outterCard"
-                card.innerHTML = `<div class="image">
-                <img src=${datos[i].imagen}>
-                </div>
-                <div class="productName">
-                <h4>${datos[i].nombre}</h4>
-                </div>
-                <div class="productPrice">
-                <p>$ ${datos[i].precio}</p>
-                </div>
-                <div class="stock">
-                <p class="pocoStock"></p>
-                </div>
-                <div class="btnContainer">
-                <button class="btnComprar">Comprar</button>
-                </div>
-                <div class="productDesc">
-                <button class="list-item" id="${datos[i]._id}">Ver más</button>
-                </div>`  
-                /* -------- APEND CHILD AL CONTENEDOR PADRE ------- */
-                contenedor.appendChild(card) 
-                /* -------- ALMACENO EN UNA VARIABLE A LOS ELEMENTOS QUE LES AGREGO EL EVENTLISTENER ------ */
-                var botones = document.getElementById(`${datos[i]._id}`)
-                /* -------- AGREGO EL EVENTLISTENER Y EL TARGET DEL EVENTO --------- */
-                botones.addEventListener('click', (e)=> {
-                var idBoton = e.target.id
-                /* -------- RECORRO EL ARRAY CON .MAP --------- */
-                datos.map(item => {
-                    if (item._id == idBoton){
-                        var modal = document.getElementById("modal")
-                        /* -------- ABRO MODAL AGREGANDO CLASE -------- */
-                        modal.classList.add("active")
-                        document.getElementById("title").innerHTML = `${item.nombre}`
-                        document.getElementById("modalBody").innerHTML = `<div><img src=${item.imagen}><p>${item.descripcion}</p></div>`
-                        /* -------- CIERRO MODAL BORRANDO CLASE --------- */
-                        var botonCerrar= document.getElementById("close-button")
-                        botonCerrar.addEventListener('click', () =>{
-                            modal.classList.remove("active")
-                            })
-                        }
-                    })        
-                })
-                /* -------- ALMECENO EN UNA VARIABLE LA CANT DE STOCK DE LOS ELEMENTOS -------- */
-                var pocoStock = document.getElementsByClassName("pocoStock")
-                if (datos[i].stock < 5){
-                    pocoStock[i].innerHTML = `Quedan menos de ${datos[i].stock} unidades!!!`
-                    pocoStock[i].classList.add("red")                
-                } else {
-                    pocoStock[i].innerHTML = `Quedan ${datos[i].stock} unidades`
-                }
-            }             
-        }   
+    crearCard(datos, contenedor)
+    agregarACarrito()      
 }
-
+function crearCard(datos, contenedor){
+    /* -------- RECORRO ARRAY DE OBJETOS --------*/
+    for(var i= 0 ; i<datos.length; i++){  
+        /* -------- CREO CARDS DE PRODUCTOS --------- */       
+        const card = document.createElement("div")
+        card.className = "outterCard"
+        card.innerHTML = `<div class="image">
+        <img src=${datos[i].imagen}>
+        </div>
+        <div class="productName">
+        <h4>${datos[i].nombre}</h4>
+        </div>
+        <div class="productPrice">
+        <p>$ ${datos[i].precio}</p>
+        </div>
+        <div class="stock">
+        <p class="pocoStock"></p>
+        </div>
+        <div class="btnContainer">
+        <button class="btnComprar">Comprar</button>
+        </div>
+        <div class="productDesc">
+        <button class="list-item" id="${datos[i]._id}">Ver más</button>
+        </div>`  
+        /* -------- APEND CHILD AL CONTENEDOR PADRE ------- */
+        contenedor.appendChild(card) 
+        /* -------- ALMACENO EN UNA VARIABLE A LOS ELEMENTOS QUE LES AGREGO EL EVENTLISTENER ------ */
+        var botones = document.getElementById(`${datos[i]._id}`)
+        /* -------- AGREGO EL EVENTLISTENER Y EL TARGET DEL EVENTO --------- */
+        botones.addEventListener('click', (e)=> {
+        var idBoton = e.target.id
+        /* -------- RECORRO EL ARRAY CON .MAP --------- */
+        datos.map(item => {
+            if (item._id == idBoton){
+                var modal = document.getElementById("modal")
+                /* -------- ABRO MODAL AGREGANDO CLASE -------- */
+                modal.classList.add("active")
+                document.getElementById("title").innerHTML = `${item.nombre}`
+                document.getElementById("modalBody").innerHTML = `<div><img src=${item.imagen}><p>${item.descripcion}</p></div>`
+                /* -------- CIERRO MODAL BORRANDO CLASE --------- */
+                var botonCerrar= document.getElementById("close-button")
+                botonCerrar.addEventListener('click', () =>{
+                    modal.classList.remove("active")
+                    })
+                }
+            })        
+        })
+        /* -------- ALMECENO EN UNA VARIABLE LA CANT DE STOCK DE LOS ELEMENTOS -------- */
+        var pocoStock = document.getElementsByClassName("pocoStock")
+        if (datos[i].stock < 5){
+            pocoStock[i].innerHTML = `Quedan menos de ${datos[i].stock} unidades!!!`
+            pocoStock[i].classList.add("red")                
+        } else {
+            pocoStock[i].innerHTML = `Quedan ${datos[i].stock} unidades`
+        }
+    }             
+}
 
 const nav= document.getElementById("boton")  
 nav.addEventListener("click", e => {
@@ -158,6 +155,7 @@ function addToCartClicked(e){
         button.addEventListener("click", e => {
             var buttonClicked = e.target
             buttonClicked.parentElement.parentElement.remove()
+            totalCarrito()
         })
     }
     
@@ -165,27 +163,32 @@ function addToCartClicked(e){
     vaciarCarrito()
     totalCarrito()
     borrarItem()
+    finalizarCompra()
     modalComprar()
     setTimeout(modalComprar, 1000)
-    finalizarCompra()
-    setTimeout(finalizarCompra, 1000)
+    setInterval(removerCompra, 2000)
+
 }
 
 function vaciarCarrito(){
     var botonVaciar = document.getElementById("vaciarCarrito")
     botonVaciar.addEventListener("click", ()=>{
         document.getElementById("productosCarrito").innerHTML= ""
-        document.getElementById("cantidadProductosCarrito").classList.remove("active")
+        document.getElementById("cantidadProductosCarrito").classList.toggle("active")
         document.getElementById("precioDeTodo").innerHTML= ""
+        abrirCarrito()
     })
 }
 function finalizarCompra(){
-    var botonFinalizar = document.getElementById("finalizarCompraBoton")
+    var botonFinalizar = document.getElementById("finalizarCompra")
     botonFinalizar.addEventListener("click", ()=>{
-        console.log("gola")
-        var modalComprar =document.getElementById("finalizarCompraBoton")
-        modalComprar.classList.toggle("active")
+        var finalizando =document.getElementById("finalizarCompraBoton")
+        finalizando.classList.add("active")   
+          
     })
+}
+function removerCompra(){
+    document.getElementById("finalizarCompraBoton").classList.remove("active")
 }
 
 function totalCarrito(){
@@ -207,8 +210,8 @@ function totalCarrito(){
     document.getElementById("precioTotal").innerText= `Total: $ ${precioFinal}`
 }
 function modalComprar(){
-    var modalComprar =document.getElementById("agregadoProducto")
-    modalComprar.classList.toggle("active")
+    var comprar =document.getElementById("agregadoProducto")
+    comprar.classList.toggle("active")
     
 }
 
