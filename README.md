@@ -14,7 +14,7 @@ Bootstrap
 <h1>Autor ✒️</h1><br>
 Jordi Belmonte
 
-Expresiones de Gratitud 🎁
+<h1>Expresiones de Gratitud 🎁</h1><br>
 Se agradece a Fernando Biaus por la mentoría y la dedicación.
 A todos los integrantes del equipo por la gran dedicacion con la que se desenvolvieron y por el resultado obtenido!
 También a Mindhub por la oportunidad de crecer como developers.
