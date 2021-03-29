@@ -1,4 +1,5 @@
-#PetShop
+PetShop
+
 Web realizada completamente con Javascript Vanilla, Bootstrap 4, HTML y CSS. Web realizada con el objetivo como Challenge Javascript la cual se basa en una tienda de productos para Mascotas. La web cuenta con un carrito básico hecho Javascript Vanilla y CSS puro.
 
 Trabajo realizado en una semana en el mes de Diciembre de 2020.
