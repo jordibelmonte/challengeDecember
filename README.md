@@ -5,13 +5,13 @@ Web realizada completamente con Javascript Vanilla, Bootstrap 4, HTML y CSS. Web
 Trabajo realizado en una semana en el mes de Diciembre de 2020.
 Para poder ver el trabajo final realizado puedes ingresar a: https://jordibelmonte.github.io/petShop/index.html
 
-Construido con 🛠️<br>
+<h1>Construido con 🛠️</h1><br>
 Javascript<br>
 HTML5<br>
 CSS<br>
 Bootstrap
 
-Autor ✒️<br>
+<h1>Autor ✒️</h1><br>
 Jordi Belmonte
 
 Expresiones de Gratitud 🎁
